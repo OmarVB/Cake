@@ -1,0 +1,138 @@
+:root {
+  font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
+  line-height: 1.5;
+  font-weight: 400;
+  background-color: #f0f0f0;
+}
+
+body {
+  margin: 0;
+  display: flex;
+  place-items: center;
+  min-width: 320px;
+  min-height: 100vh;
+}
+
+#app {
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 2rem;
+  text-align: center;
+}
+
+.cake-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 2rem;
+}
+
+.cake {
+  position: relative;
+  width: 250px;
+  height: 200px;
+}
+
+.layer {
+  position: absolute;
+  left: 0;
+  right: 0;
+  border-radius: 10px;
+}
+
+.layer.bottom {
+  bottom: 0;
+  height: 60px;
+  background-color: #a05a2c;
+  width: 100%;
+}
+
+.layer.middle {
+  bottom: 60px;
+  height: 50px;
+  background-color: #c17f59;
+  width: 90%;
+  margin: 0 auto;
+}
+
+.layer.top {
+  bottom: 110px;
+  height: 40px;
+  background-color: #e2a77f;
+  width: 80%;
+  margin: 0 auto;
+}
+
+.candles {
+  position: absolute;
+  bottom: 150px;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+  z-index: 1;
+}
+
+.candle {
+  width: 10px;
+  height: 30px;
+  background: linear-gradient(180deg, #ff9999, #ff5555);
+  position: relative;
+}
+
+.flame {
+  position: absolute;
+  top: -20px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 12px;
+  height: 20px;
+  background: #ffd700;
+  border-radius: 50% 50% 20% 20%;
+  animation: flicker 1s infinite alternate;
+  box-shadow: 0 0 10px #ffd700, 0 0 20px #ffd700, 0 0 30px #ff6b00;
+}
+
+h2 {
+  color: #333;
+  font-size: 2em;
+  margin-top: 1rem;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
+}
+
+@keyframes flicker {
+  0% {
+    transform: translateX(-50%) scale(1);
+    opacity: 1;
+  }
+  100% {
+    transform: translateX(-50%) scale(1.1);
+    opacity: 0.8;
+  }
+}
+
+/* Add some decoration to the cake layers */
+.layer::after {
+  content: '';
+  position: absolute;
+  top: 5px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 90%;
+  height: 3px;
+  background: rgba(255, 255, 255, 0.3);
+  border-radius: 10px;
+}
+
+/* Add some frosting drips */
+.layer.top::before,
+.layer.middle::before {
+  content: '';
+  position: absolute;
+  top: -5px;
+  left: 0;
+  right: 0;
+  height: 10px;
+  background: inherit;
+  border-radius: 50% 50% 0 0;
+}
